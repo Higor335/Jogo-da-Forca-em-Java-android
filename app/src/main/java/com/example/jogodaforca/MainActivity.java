@@ -31,6 +31,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        declaraChamada();
+        listenerNick();
+    }
+
+    private void listenerNick() {
+        nick.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count){
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validacaoBotao();
+            }
+        });
+    }
+
+    private void declaraChamada(){
         Entrar = (Button) findViewById(R.id.btEntrar);
         Entrar.setEnabled(false);
 
@@ -49,23 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (ImageButton imageButton : imageButtons) {
             imageButton.setOnClickListener(this);
         }
-
-        nick.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Não é necessário implementar esse método
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Não é necessário implementar esse método
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                updateEntrarButtonState();
-            }
-        });
     }
 
     @Override
@@ -74,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (imageButton.getId() == v.getId()) {
                 imageButton.setSelected(true);
                 ImageViewCompat.setImageTintList(imageButton, null); // Remover a cor
-                updateEntrarButtonState();
+                validacaoBotao();
             } else {
                 imageButton.setSelected(false);
                 ImageViewCompat.setImageTintList(imageButton, ContextCompat.getColorStateList(this, R.color.grey)); // Aplicar cor azul
@@ -82,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void updateEntrarButtonState() {
+    private void validacaoBotao() {
         boolean isNickEmpty = nick.getText().toString().isEmpty();
         boolean isAnyImageButtonSelected = btchar1.isSelected() || btchar2.isSelected() || btchar3.isSelected() || btchar4.isSelected();
         Entrar.setEnabled(!isNickEmpty && isAnyImageButtonSelected);
@@ -98,5 +103,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void entrar(View v){
         System.out.println("faz alguma coisa");
     }
-
 }
