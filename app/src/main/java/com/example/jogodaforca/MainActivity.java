@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.core.widget.ImageViewCompat;
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton btchar1, btchar2, btchar3, btchar4;
     private EditText nick;
     private List<ImageButton> imageButtons;
-    private boolean isClicked = false;
     private Button Entrar;
 
     @SuppressLint("MissingInflatedId")
@@ -74,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         for (ImageButton imageButton : imageButtons) {
             if (imageButton.getId() == v.getId()) {
-                isClicked=true;
                 imageButton.setSelected(true);
                 ImageViewCompat.setImageTintList(imageButton, null); // Remover a cor
                 updateEntrarButtonState();
