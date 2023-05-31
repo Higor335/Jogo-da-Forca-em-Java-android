@@ -62,7 +62,7 @@
             android:paddingBottom="30dp">
 
             <TextView
-                android:id="@+id/tvName"
+                android:id="@+id/tvSelecao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -94,7 +94,8 @@
                         android:layout_height="160dp"
                         android:backgroundTint="#FFFDFD"
                         android:onClick="escolheAvatar"
-                        app:srcCompat="@drawable/char4" />
+                        app:srcCompat="@drawable/char4"
+                        android:contentDescription="personagem 4"/>
 
                     <ImageButton
                         android:id="@+id/btchar1"
@@ -103,7 +104,8 @@
                         android:backgroundTint="#FFFFFF"
                         android:contextClickable="false"
                         android:onClick="escolheAvatar"
-                        app:srcCompat="@drawable/char1" />
+                        app:srcCompat="@drawable/char1"
+                        android:contentDescription="personagem 1"/>
                 </TableRow>
 
                 <TableRow
@@ -116,7 +118,8 @@
                         android:layout_height="160dp"
                         android:backgroundTint="#FFFFFF"
                         android:onClick="escolheAvatar"
-                        app:srcCompat="@drawable/char3" />
+                        app:srcCompat="@drawable/char3"
+                        android:contentDescription="personagem 3"/>
 
                     <ImageButton
                         android:id="@+id/btChar3"
@@ -124,7 +127,8 @@
                         android:layout_height="160dp"
                         android:backgroundTint="#FFFFFF"
                         android:onClick="escolheAvatar"
-                        app:srcCompat="@drawable/char2" />
+                        app:srcCompat="@drawable/char2"
+                        android:contentDescription="personagem 2"/>
                 </TableRow>
 
             </TableLayout>
