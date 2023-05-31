@@ -1,18 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FA0C0C"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginVertical="20dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/coda"
+        android:gravity="center"
+        android:text="@string/tituloPerfil"
+        android:textColor="#2D6306"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/coda"
+                android:gravity="center"
+                android:text="@string/nick"
+                android:textColor="#2D6306"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etNick"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="@font/coda"
+                android:hint="Seu apelido no jogo"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                android:textSize="19sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/coda"
+                android:gravity="center"
+                android:text="@string/avatar"
+                android:textColor="#2D6306"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/btChar4"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:backgroundTint="#FFFDFD"
+                        android:onClick="escolheAvatar"
+                        app:srcCompat="@drawable/char4" />
+
+                    <ImageButton
+                        android:id="@+id/btchar1"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:contextClickable="false"
+                        android:onClick="escolheAvatar"
+                        app:srcCompat="@drawable/char1" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/btChar2"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:onClick="escolheAvatar"
+                        app:srcCompat="@drawable/char3" />
+
+                    <ImageButton
+                        android:id="@+id/btChar3"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:onClick="escolheAvatar"
+                        app:srcCompat="@drawable/char2" />
+                </TableRow>
+
+            </TableLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btEntrar"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:backgroundTint="#6A646C"
+                android:fontFamily="@font/coda"
+                android:onClick="entrar"
+                android:text="Entrar"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="15dp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

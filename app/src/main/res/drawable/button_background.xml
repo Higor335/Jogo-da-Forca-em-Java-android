@@ -1,0 +1,13 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Camada do fundo do botão -->
+    <item android:drawable="@android:color/transparent" />
+
+    <!-- Camada da borda -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:color="#747477" android:width="2dp" />
+        </shape>
+    </item>
+</layer-list>

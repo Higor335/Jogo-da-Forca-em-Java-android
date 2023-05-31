@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Jogo da Forca</string>
+    <string name="tituloPerfil">Criação de Perfil</string>
+    <string name="nick">NICKNAME:</string>
+    <string name="avatar">Escolha um Avatar</string>
+    <string name="entrar">Entrar</string>
 </resources>
