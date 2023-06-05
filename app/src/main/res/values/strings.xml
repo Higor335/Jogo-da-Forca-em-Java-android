@@ -4,4 +4,9 @@
     <string name="nick">NICKNAME:</string>
     <string name="avatar">Escolha um Avatar</string>
     <string name="entrar">Entrar</string>
+
+    <string name="titulo">Dados do Usuário</string>
+    <string name="seuAvatar">Seu Avatar</string>
+    <string name="voltar">Voltar</string>
+    <string name="continuar">Continuar</string>
 </resources>

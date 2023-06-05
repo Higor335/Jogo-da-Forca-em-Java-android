@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText nick;
     private List<ImageButton> imageButtons;
     private Button Entrar;
+    public String imagemSelecionada="";
+
+    public User user;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Entrar.setEnabled(false);
 
         nick = (EditText) findViewById(R.id.etNick);
-        btchar1 = (ImageButton) findViewById(R.id.btchar1);
+        btchar1 = (ImageButton) findViewById(R.id.btChar1);
         btchar2 = (ImageButton) findViewById(R.id.btChar2);
         btchar3 = (ImageButton) findViewById(R.id.btChar3);
         btchar4 = (ImageButton) findViewById(R.id.btChar4);
@@ -79,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (imageButton.getId() == v.getId()) {
                 imageButton.setSelected(true);
                 ImageViewCompat.setImageTintList(imageButton, null); // Remover a cor
+                imagemSelecionada = String.valueOf(imageButton.getId());
                 validacaoBotao();
             } else {
                 imageButton.setSelected(false);
@@ -101,6 +106,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void entrar(View v){
-        System.out.println("faz alguma coisa");
+        user = new User();
+        user.setNick(String.valueOf(nick.getText()));
+        user.setFoto(pegaImagem(imagemSelecionada));
+
+        Intent intent = new Intent(this, DadosUsuario.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    private String pegaImagem(String dado){
+        String resultado="";
+        int img = Integer.parseInt(dado);
+
+        if(img == 2131362293){
+            resultado = "@drawable/char1";
+        }else if(img == 2131361890){
+            resultado = "@drawable/char3";
+        } if(img == 2131361891){
+            resultado = "@drawable/char2";
+        }else if(img == 2131361892){
+            resultado = "@drawable/char4";
+        }
+        return resultado;
     }
 }

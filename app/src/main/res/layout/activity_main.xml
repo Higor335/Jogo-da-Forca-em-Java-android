@@ -103,7 +103,7 @@
                             app:srcCompat="@drawable/char4" />
 
                         <ImageButton
-                            android:id="@+id/btchar1"
+                            android:id="@+id/btChar1"
                             android:layout_width="160dp"
                             android:layout_height="160dp"
                             android:backgroundTint="#FFFFFF"
