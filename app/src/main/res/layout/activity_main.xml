@@ -49,9 +49,9 @@
 
                 <EditText
                     android:id="@+id/etNick"
-                    android:layout_width="400dp"
+                    android:layout_width="430dp"
                     android:layout_height="50dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="40dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:fontFamily="@font/coda"
@@ -100,6 +100,7 @@
                             android:backgroundTint="#FFFDFD"
                             android:contentDescription="personagem 4"
                             android:onClick="escolheAvatar"
+                            android:tag="dourado4"
                             app:srcCompat="@drawable/char4" />
 
                         <ImageButton
@@ -110,6 +111,7 @@
                             android:contentDescription="personagem 1"
                             android:contextClickable="false"
                             android:onClick="escolheAvatar"
+                            android:tag="branco1"
                             app:srcCompat="@drawable/char1" />
                     </TableRow>
 
@@ -124,6 +126,7 @@
                             android:backgroundTint="#FFFFFF"
                             android:contentDescription="personagem 3"
                             android:onClick="escolheAvatar"
+                            android:tag="cinza3"
                             app:srcCompat="@drawable/char3" />
 
                         <ImageButton
@@ -133,6 +136,7 @@
                             android:backgroundTint="#FFFFFF"
                             android:contentDescription="personagem 2"
                             android:onClick="escolheAvatar"
+                            android:tag="azul2"
                             app:srcCompat="@drawable/char2" />
                     </TableRow>
 

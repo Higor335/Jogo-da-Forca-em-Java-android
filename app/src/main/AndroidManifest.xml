@@ -12,6 +12,9 @@
         android:theme="@style/Theme.JogoDaForca"
         tools:targetApi="31">
         <activity
+            android:name=".MenuDificuldade"
+            android:exported="false" />
+        <activity
             android:name=".DadosUsuario"
             android:exported="false" />
         <activity

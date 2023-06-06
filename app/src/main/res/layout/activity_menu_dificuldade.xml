@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:pointerIcon="none"
+    tools:context=".MenuDificuldade">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/coda"
+        android:gravity="center"
+        android:text="@string/dificuldade"
+        android:textColor="#2D6306"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#038A03"
+        android:fontFamily="@font/coda"
+        android:paddingLeft="60dp"
+        android:paddingRight="100dp"
+        android:text="@string/facil"
+        android:textSize="20sp"
+        app:icon="@drawable/iconfacil" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginVertical="25dp"
+        android:backgroundTint="#C1C100"
+        android:fontFamily="@font/coda"
+        android:paddingLeft="60dp"
+        android:paddingRight="100dp"
+        android:text="@string/medio"
+        android:textSize="20sp"
+        app:icon="@drawable/iconmedio" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginVertical="25dp"
+        android:backgroundTint="#9A0303"
+        android:fontFamily="@font/coda"
+        android:paddingLeft="60dp"
+        android:paddingRight="100dp"
+        android:text="@string/dificil"
+        android:textSize="20sp"
+        app:icon="@drawable/icondificil" />
+
+</LinearLayout>

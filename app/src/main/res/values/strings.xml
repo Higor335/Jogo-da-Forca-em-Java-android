@@ -9,4 +9,9 @@
     <string name="seuAvatar">Seu Avatar</string>
     <string name="voltar">Voltar</string>
     <string name="continuar">Continuar</string>
+
+    <string name="dificuldade">Selecione a Dificuldade</string>
+    <string name="facil">Fácil</string>
+    <string name="medio">Médio</string>
+    <string name="dificil">Difícil</string>
 </resources>

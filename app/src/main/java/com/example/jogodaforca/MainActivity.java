@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (imageButton.getId() == v.getId()) {
                 imageButton.setSelected(true);
                 ImageViewCompat.setImageTintList(imageButton, null); // Remover a cor
-                imagemSelecionada = String.valueOf(imageButton.getId());
+                imagemSelecionada = imageButton.getTag().toString();
                 validacaoBotao();
             } else {
                 imageButton.setSelected(false);
@@ -117,15 +117,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String pegaImagem(String dado){
         String resultado="";
-        int img = Integer.parseInt(dado);
 
-        if(img == 2131362293){
+        System.out.println("Escolhido "+dado);
+        if(dado.equals("branco1")){
             resultado = "@drawable/char1";
-        }else if(img == 2131361890){
+        }else if(dado.equals("cinza3")){
             resultado = "@drawable/char3";
-        } if(img == 2131361891){
+        } if(dado.equals("azul2")){
             resultado = "@drawable/char2";
-        }else if(img == 2131361892){
+        }else if(dado.equals("dourado4")){
             resultado = "@drawable/char4";
         }
         return resultado;

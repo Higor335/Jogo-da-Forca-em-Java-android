@@ -43,4 +43,9 @@ public class DadosUsuario extends AppCompatActivity {
     public void voltar(View v){
         finish();
     }
+
+    public void continuar(View v){
+        Intent intent = new Intent(this, MenuDificuldade.class);
+        startActivity(intent);
+    }
 }
