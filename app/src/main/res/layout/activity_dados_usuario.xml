@@ -23,7 +23,8 @@
             android:gravity="center"
             android:text="@string/titulo"
             android:textColor="#2D6306"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <TableLayout
             android:layout_width="match_parent"
