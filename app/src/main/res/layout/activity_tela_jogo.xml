@@ -23,11 +23,7 @@
                 android:id="@+id/ivJogador"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="5dp"
-                android:adjustViewBounds="false"
-                android:scaleType="fitXY"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@drawable/char1" />
 
             <TextView
                 android:id="@+id/tvJogador"
@@ -73,6 +69,7 @@
                     android:id="@+id/et1"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
+                    android:editable="false"
                     android:ems="10"
                     android:inputType="none" />
 
@@ -80,65 +77,65 @@
                     android:id="@+id/et2"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
+                    android:editable="false"
+                    android:ems="10" />
 
                 <EditText
                     android:id="@+id/et3"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
+                    android:editable="false"
+                    android:ems="10" />
 
                 <EditText
                     android:id="@+id/et4"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
+                    android:editable="false"
+                    android:ems="10" />
 
                 <EditText
                     android:id="@+id/et5"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
+                    android:editable="false"
+                    android:ems="10" />
 
                 <EditText
                     android:id="@+id/et6"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
+                    android:editable="false"
+                    android:ems="10" />
 
                 <EditText
                     android:id="@+id/et7"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
+                    android:editable="false"
+                    android:ems="10" />
 
                 <EditText
                     android:id="@+id/et8"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text" />
+                    android:editable="false"
+                    android:ems="10" />
 
                 <EditText
                     android:id="@+id/et9"
-                    android:layout_width="47dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
+                    android:editable="false"
                     android:ems="10"
-                    android:inputType="text"
                     android:visibility="visible" />
 
                 <EditText
                     android:id="@+id/et10"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
+                    android:editable="false"
                     android:ems="10"
-                    android:inputType="text"
                     android:visibility="visible" />
 
             </TableRow>
