@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 validacaoBotao();
             } else {
                 imageButton.setSelected(false);
-                ImageViewCompat.setImageTintList(imageButton, ContextCompat.getColorStateList(this, R.color.grey)); // Aplicar cor azul
+                ImageViewCompat.setImageTintList(imageButton, ContextCompat.getColorStateList(this, R.color.grey)); // Aplicar cor cinza
             }
         }
     }

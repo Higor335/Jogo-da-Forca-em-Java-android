@@ -1,6 +1,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Camada do fundo do botão -->
     <item android:drawable="@android:color/transparent" />
+    <item android:backgroundTint="@android:color/transparent"/>
 
     <!-- Camada da borda -->
     <item>
