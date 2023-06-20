@@ -42,14 +42,9 @@ public class TelaJogo extends AppCompatActivity {
     }
 
     private void preencherCampos() {
-        Intent intent = getIntent();
-        if (intent.hasExtra("user")){
-            User user = (User) intent.getSerializableExtra("user");
-            nick.setText(user.getNick());
-            dificuldade = user.getDificuldade();
+        BancoDeDados bd = new BancoDeDados(this);
+        avatar.setImageResource(bd.obterFoto());
+        nick.setText(bd.obterNick());
 
-            int idImagem = getResources().getIdentifier(user.getFoto(), "drawable", getPackageName());
-            avatar.setImageResource(idImagem);
-        }
     }
 }

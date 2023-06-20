@@ -16,6 +16,11 @@ public class DadosUsuario extends AppCompatActivity {
     private TextView nick;
     private ImageView avatar;
 
+    String nome;
+    int foto;
+
+    BancoDeDados bd = new BancoDeDados(this);
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +39,23 @@ public class DadosUsuario extends AppCompatActivity {
             User user;
             user = (User) intent.getSerializableExtra("user");
             nick.setText(user.getNick());
-
+            nome = user.getNick();
             int idImagem = getResources().getIdentifier(user.getFoto(), "drawable", getPackageName());
             avatar.setImageResource(idImagem);
+            foto = idImagem;
+
         }
+    }
+
+    public void continuar(View v){
+        bd.salvarVariaveis(nome,foto);
+
+        Intent intent = new Intent(this, MenuDificuldade.class);
+        startActivity(intent);
     }
 
     public void voltar(View v){
         finish();
     }
 
-    public void continuar(View v){
-        Intent intent = new Intent(this, MenuDificuldade.class);
-        startActivity(intent);
-    }
 }
