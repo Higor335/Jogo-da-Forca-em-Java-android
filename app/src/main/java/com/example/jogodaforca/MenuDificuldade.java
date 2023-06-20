@@ -47,7 +47,7 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
     }
 
     private void Jogar() {
-        Intent intent = new Intent(this, TelaJogo.class);
+        Intent intent = new Intent(this, Forca.class);
         startActivity(intent);
     }
 }
