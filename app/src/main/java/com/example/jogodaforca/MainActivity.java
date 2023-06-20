@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button Entrar;
     public String imagemSelecionada="";
 
+
     public User user;
 
     @SuppressLint("MissingInflatedId")
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user = new User();
         user.setNick(String.valueOf(nick.getText()));
         user.setFoto(pegaImagem(imagemSelecionada));
+
 
         Intent intent = new Intent(this, DadosUsuario.class);
         intent.putExtra("user",user);
