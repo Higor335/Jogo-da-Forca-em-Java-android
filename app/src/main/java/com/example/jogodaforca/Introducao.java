@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.VideoView;
 
 public class Introducao extends AppCompatActivity {
@@ -29,7 +31,6 @@ public class Introducao extends AppCompatActivity {
         videoView.start();
 
         // Aguarde o término da reprodução do vídeo
-        // Aguarde o término da reprodução do vídeo
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
@@ -38,5 +39,18 @@ public class Introducao extends AppCompatActivity {
             }
         });
 
+        // Adicionar um listener de toque à View raiz do layout
+        getWindow().getDecorView().getRootView().setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                // Interromper a reprodução do vídeo imediatamente
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    videoView.stopPlayback();
+                    Intent intent = new Intent(Introducao.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                return true;
+            }
+        });
     }
 }

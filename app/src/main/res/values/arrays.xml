@@ -1,0 +1,8 @@
+<resources>
+    <array name="animais">
+        <item>Cachorro</item>
+        <item>Gato</item>
+        <item>Leão</item>
+        <!-- outros itens -->
+    </array>
+</resources>

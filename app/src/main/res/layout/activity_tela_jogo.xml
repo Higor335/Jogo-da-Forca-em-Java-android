@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -17,7 +17,8 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
 
             <ImageView
                 android:id="@+id/ivJogador"
@@ -31,7 +32,7 @@
                 android:id="@+id/tvJogador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="5dp"
                 android:layout_marginVertical="15dp"
                 android:text="TextView"
                 android:textSize="15sp" />
@@ -41,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="80dp"
                 android:layout_marginRight="10dp"
                 android:text="TextView"
                 android:textSize="20dp" />
@@ -157,9 +158,10 @@
         </LinearLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:paddingBottom="50dp">
 
             <TableRow
                 android:layout_width="wrap_content"
@@ -167,6 +169,7 @@
                 android:layout_margin="0dip"
                 android:layout_weight="2"
                 android:clipToPadding="false"
+                android:gravity="center"
                 android:padding="0dip"
                 android:visibility="visible">
 
@@ -232,6 +235,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dip"
+                android:gravity="center"
                 android:padding="0dip">
 
                 <Button
@@ -295,6 +299,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dip"
+                android:gravity="center"
                 android:padding="0dip">
 
                 <Button
