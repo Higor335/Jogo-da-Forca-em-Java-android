@@ -9,7 +9,7 @@
     tools:context=".MenuDificuldade">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvTI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -21,7 +21,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btFacil"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginHorizontal="18dp"
@@ -32,11 +32,12 @@
         android:paddingLeft="60dp"
         android:paddingRight="100dp"
         android:text="@string/facil"
+        android:tag="facil"
         android:textSize="20sp"
         app:icon="@drawable/iconfacil" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btMedio"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginHorizontal="18dp"
@@ -46,11 +47,12 @@
         android:paddingLeft="60dp"
         android:paddingRight="100dp"
         android:text="@string/medio"
+        android:tag="medio"
         android:textSize="20sp"
         app:icon="@drawable/iconmedio" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btDificil"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginHorizontal="18dp"
@@ -60,6 +62,7 @@
         android:paddingLeft="60dp"
         android:paddingRight="100dp"
         android:text="@string/dificil"
+        android:tag="dificil"
         android:textSize="20sp"
         app:icon="@drawable/icondificil" />
 
