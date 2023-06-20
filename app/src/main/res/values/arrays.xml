@@ -1,8 +1,14 @@
 <resources>
-    <array name="animais">
-        <item>Cachorro</item>
-        <item>Gato</item>
-        <item>Leão</item>
-        <!-- outros itens -->
-    </array>
+        <string-array name="animaisMedio">
+            <item>Cachorro</item>
+            <item>Girafa</item>
+            <item>Leopardo</item>
+            <item>Golfinho</item>
+            <item>Coelho</item>
+            <item>Camelo</item>
+            <item>Pinguim</item>
+            <item>Pantera</item>
+            <item>Macaco</item>
+            <item>Jaguar</item>
+        </string-array>
 </resources>

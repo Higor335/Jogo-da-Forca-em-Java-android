@@ -55,90 +55,17 @@
         </LinearLayout>
 
         <TableLayout
+            android:id="@+id/tableLinhas"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:gravity="center">
 
             <TableRow
+                android:id="@+id/rowLinhas"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginVertical="10dp">
-
-                <EditText
-                    android:id="@+id/et1"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10"
-                    android:inputType="none" />
-
-                <EditText
-                    android:id="@+id/et2"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10" />
-
-                <EditText
-                    android:id="@+id/et3"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10" />
-
-                <EditText
-                    android:id="@+id/et4"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10" />
-
-                <EditText
-                    android:id="@+id/et5"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10" />
-
-                <EditText
-                    android:id="@+id/et6"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10" />
-
-                <EditText
-                    android:id="@+id/et7"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10" />
-
-                <EditText
-                    android:id="@+id/et8"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10" />
-
-                <EditText
-                    android:id="@+id/et9"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10"
-                    android:visibility="visible" />
-
-                <EditText
-                    android:id="@+id/et10"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:ems="10"
-                    android:visibility="visible" />
-
-            </TableRow>
+                android:layout_marginVertical="10dp" />
 
         </TableLayout>
 
