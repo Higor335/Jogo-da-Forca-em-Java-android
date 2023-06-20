@@ -15,6 +15,9 @@
             android:name=".TelaJogo"
             android:exported="false" />
         <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
             android:name=".MenuDificuldade"
             android:exported="false" />
         <activity

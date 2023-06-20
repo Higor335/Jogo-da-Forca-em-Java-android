@@ -5,6 +5,7 @@ import static android.widget.Button.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,9 +26,9 @@ public class MenuDificuldade extends AppCompatActivity {
         getSupportActionBar().hide();
 
         tv = findViewById(R.id.tvTI);
-        Button button1 = findViewById(R.id.btFacil); // Substitua "button1" pelo ID do primeiro botão
-        Button button2 = findViewById(R.id.btMedio); // Substitua "button2" pelo ID do segundo botão
-        Button button3 = findViewById(R.id.btDificil); // Substitua "button3" pelo ID do terceiro botão
+        Button button1 = findViewById(R.id.btFacil);
+        Button button2 = findViewById(R.id.btMedio);
+        Button button3 = findViewById(R.id.btDificil);
 
         // Adicione o listener de clique aos botões
         button1.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +59,14 @@ public class MenuDificuldade extends AppCompatActivity {
         });
     }
 
-    public void Jogar(String x) {
-        tv.setText("Botão selecionado: " + x);
+    public void Jogar(String dificult) {
+        Intent intent = getIntent();
+        if (intent.hasExtra("user")){
+            User user;
+            user = (User) intent.getSerializableExtra("user");
+            user.setDificuldade(dificult);
+        }
+        Intent inte = new Intent(this, TelaJogo.class);
+        startActivity(inte);
     }
 }

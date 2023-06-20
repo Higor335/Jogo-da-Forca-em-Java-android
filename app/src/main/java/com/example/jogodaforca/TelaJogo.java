@@ -19,6 +19,8 @@ public class TelaJogo extends AppCompatActivity {
     public User user;
 
     private TextView nick;
+
+    String dificuldade;
     private ImageView avatar;
 
     // Gera um índice aleatório
@@ -47,6 +49,7 @@ public class TelaJogo extends AppCompatActivity {
             User user;
             user = (User) intent.getSerializableExtra("user");
             nick.setText(user.getNick());
+            dificuldade = user.getDificuldade();
 
             int idImagem = getResources().getIdentifier(user.getFoto(), "drawable", getPackageName());
             avatar.setImageResource(idImagem);

@@ -5,6 +5,16 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String nick;
     private String foto;
+
+    public String getDificuldade() {
+        return dificuldade;
+    }
+
+    public void setDificuldade(String dificuldade) {
+        this.dificuldade = dificuldade;
+    }
+
+    private String dificuldade;
     private int score;
 
     public String getNick() {
