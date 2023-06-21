@@ -28,7 +28,7 @@ public class CriaPalavra extends AppCompatActivity {
     int quantidade = 0;
     BancoPalavras bp;
     String temaPalavras;
-    long existePalavra;
+    long existePalavra = -1;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -48,7 +48,7 @@ public class CriaPalavra extends AppCompatActivity {
 
     public void verificaDica(View v){
         bp = new BancoPalavras(this);
-        int quantidade = bp.obterQuantidadePalavras();
+        quantidade = bp.obterQuantidadePalavras();
         if(quantidade>0){
             v.setVisibility(View.GONE);
         }else{
@@ -57,18 +57,18 @@ public class CriaPalavra extends AppCompatActivity {
     }
 
     public void salvar(View v){
-        if(!pala.getText().toString().isEmpty()) {
+        if (!pala.getText().toString().isEmpty()) {
             bp = new BancoPalavras(this);
-            existePalavra = bp.inserirPalavra(String.valueOf(pala));
-            long id = bp.inserirDica(String.valueOf(tema));
-            if (id != -1) {
+            existePalavra = bp.inserirPalavra(pala.getText().toString(), tema.getText().toString());
+            System.out.println("A DICA É: " + bp.buscarDica());
+            if (existePalavra != -1) {
                 Toast.makeText(getApplicationContext(), "Palavra salva com sucesso", Toast.LENGTH_SHORT).show();
             }
             pala.setText("");
-            temaPalavras = String.valueOf(tema.getText());
+            temaPalavras = tema.getText().toString();
             mostraQTD();
             verificaDica(tb);
-        }else{
+        } else {
             Toast.makeText(getApplicationContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
         }
     }
@@ -82,11 +82,6 @@ public class CriaPalavra extends AppCompatActivity {
 
     public void volta(View v){
         Intent intent = new Intent(this,MenuDificuldade.class);
-        if(existePalavra != -1){
-            User user = new User();
-            user.setDica(temaPalavras);
-            intent.putExtra("personalizado",user);
-        }
         startActivity(intent);
     }
 
@@ -98,10 +93,12 @@ public class CriaPalavra extends AppCompatActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                BancoPalavras bancoPalavras = new BancoPalavras(CriaPalavra.this);
-                bancoPalavras.apagarTodasPalavras();
-                mostraQTD();
-                verificaDica(tb);
+                if(quantidade>0) {
+                    BancoPalavras bancoPalavras = new BancoPalavras(CriaPalavra.this);
+                    bancoPalavras.apagarTodasPalavras();
+                    mostraQTD();
+                    verificaDica(tb);
+                }
             }
         });
 

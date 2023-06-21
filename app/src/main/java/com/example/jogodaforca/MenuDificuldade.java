@@ -55,14 +55,10 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
         BancoPalavras bp = new BancoPalavras(this);
         int quantidade = bp.obterQuantidadePalavras();
 
-        if(intent.hasExtra("personalizado")){
-            user = (User) intent.getSerializableExtra("personalizado");
-            button.setText(String.valueOf(bp.buscarDica()));
-            //botao seta text valor da dica
-        }
-
         if(quantidade>0){
             v.setVisibility(v.VISIBLE);
+            user = (User) intent.getSerializableExtra("personalizado");
+            button.setText(String.valueOf(bp.buscarDica()));
         }else{
             v.setVisibility(v.GONE);
         }

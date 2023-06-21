@@ -1,5 +1,6 @@
 package com.example.jogodaforca;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BancoPalavras extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "PalavrasDB";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String TABLE_NAME = "palavras";
     private static final String COLUMN_ID = "id";
@@ -31,43 +32,35 @@ public class BancoPalavras extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Lógica para atualizar o esquema do banco de dados, se necessário
+        if (oldVersion < 2) {
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + COLUMN_DICA + " TEXT");
+        }
     }
 
-    public long inserirPalavra(String palavra) {
+    public long inserirPalavra(String palavra, String dica) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_PALAVRA, palavra);
-        long id = db.insert(TABLE_NAME, null, values);
-        db.close();
-        return id;
-    }
-
-    public long inserirDica(String dica){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
         values.put(COLUMN_DICA, dica);
         long id = db.insert(TABLE_NAME, null, values);
-        db.close();
         return id;
     }
 
+    @SuppressLint("Range")
     public String buscarDica() {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         String selectQuery = "SELECT " + COLUMN_DICA + " FROM " + TABLE_NAME;
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         String dica = null;
-
-        if (cursor.moveToFirst()) {
+        if (cursor.moveToFirst() && !cursor.isNull(cursor.getColumnIndex(COLUMN_DICA))) {
             dica = cursor.getString(cursor.getColumnIndex(COLUMN_DICA));
         }
+
 
         cursor.close();
         return dica;
     }
-
-
 
     public Cursor buscarPalavras() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -85,6 +78,7 @@ public class BancoPalavras extends SQLiteOpenHelper {
             quantidade = cursor.getInt(0);
             cursor.close();
         }
+        db.close();
         return quantidade;
     }
 
