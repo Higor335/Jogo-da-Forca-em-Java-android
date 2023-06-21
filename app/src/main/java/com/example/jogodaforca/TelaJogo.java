@@ -2,29 +2,29 @@ package com.example.jogodaforca;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class TelaJogo extends AppCompatActivity {
 
-    private TextView nick;
+    private TextView nick, timer, teste;
     private ImageView avatar;
     private String dificuldade;
-    private String palavraAleatoria;
+    public String palavraAleatoria;
+
+    private char[] letrasArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,9 @@ public class TelaJogo extends AppCompatActivity {
         getSupportActionBar().hide();
 
         nick = (TextView) findViewById(R.id.tvJogador);
+        timer = (TextView) findViewById(R.id.tvTempo);
         avatar = (ImageView) findViewById(R.id.ivJogador);
+        teste = (TextView) findViewById(R.id.tvTeste);
 
         Resources resources = getResources();
         String[] animaisArray = resources.getStringArray(R.array.animaisMedio);
@@ -41,9 +43,11 @@ public class TelaJogo extends AppCompatActivity {
         Random random = new Random();
         int indiceAleatorio = random.nextInt(animaisArray.length);
 
-        String palavraAleatoria = animaisArray[indiceAleatorio];
-        criarLinhas(palavraAleatoria);
+        palavraAleatoria = animaisArray[indiceAleatorio];
+        letrasArray = palavraAleatoria.toCharArray();
 
+        criarLinhas(palavraAleatoria);
+        teste.setText(Arrays.toString(letrasArray));
 
         preencherCampos();
     }
@@ -66,6 +70,31 @@ public class TelaJogo extends AppCompatActivity {
         }
 
         tableLayout.addView(tableRow);
+    }
+
+    public void verificarLetra(View view) {
+        Button botaoLetra = (Button) view;
+        String letraClicada = botaoLetra.getText().toString();
+
+        boolean letraEncontrada = false;
+
+        for (char letra : letrasArray) {
+            String letraAtual = String.valueOf(letra);
+            if (letraClicada.contains(letraAtual)) {
+                letraEncontrada = true;
+                break;
+            }
+        }
+
+        if (letraEncontrada) {
+            // A letra está presente na palavra aleatória
+            nick.setText(letraClicada);
+            botaoLetra.setVisibility(View.INVISIBLE);
+        } else {
+            // A letra não está presente na palavra aleatória
+            timer.setText(letraClicada);
+            botaoLetra.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void preencherCampos() {
