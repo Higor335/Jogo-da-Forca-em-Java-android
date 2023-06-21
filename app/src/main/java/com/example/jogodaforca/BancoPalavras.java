@@ -33,7 +33,7 @@ public class BancoPalavras extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 2) {
-            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + COLUMN_DICA + " TEXT");
+            db.execSQL("ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + COLUMN_DICA + " TEXT DEFAULT 'N/A'");
         }
     }
 
@@ -43,6 +43,7 @@ public class BancoPalavras extends SQLiteOpenHelper {
         values.put(COLUMN_PALAVRA, palavra);
         values.put(COLUMN_DICA, dica);
         long id = db.insert(TABLE_NAME, null, values);
+        db.close();
         return id;
     }
 
@@ -57,14 +58,14 @@ public class BancoPalavras extends SQLiteOpenHelper {
             dica = cursor.getString(cursor.getColumnIndex(COLUMN_DICA));
         }
 
-
         cursor.close();
+        db.close();
         return dica;
     }
 
     public Cursor buscarPalavras() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT "+ COLUMN_PALAVRA +" FROM " + TABLE_NAME;
+        String selectQuery = "SELECT " + COLUMN_PALAVRA + " FROM " + TABLE_NAME;
         Cursor cursor = db.rawQuery(selectQuery, null);
         return cursor;
     }
