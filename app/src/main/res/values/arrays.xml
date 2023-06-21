@@ -1,5 +1,5 @@
 <resources>
-        <string-array name="animaisMedio">
+        <string-array name="animaisFacil">
             <item>Cachorro</item>
             <item>Girafa</item>
             <item>Leopardo</item>
@@ -11,4 +11,32 @@
             <item>Macaco</item>
             <item>Jaguar</item>
         </string-array>
+
+        <string-array name="objetosMedio">
+            <item>Cadeira</item>
+            <item>Mesa</item>
+            <item>Caneta</item>
+            <item>Livro</item>
+            <item>Relogio</item>
+            <item>Oculos</item>
+            <item>Chaveiro</item>
+            <item>Bolsa</item>
+            <item>Garfo</item>
+            <item>Colher</item>
+        </string-array>
+
+        <string-array name="planetasDificil">
+            <item>Mercurio</item>
+            <item>Venus</item>
+            <item>Terra</item>
+            <item>Marte</item>
+            <item>Jupiter</item>
+            <item>Saturno</item>
+            <item>Urano</item>
+            <item>Netuno</item>
+            <item>Plutao</item>
+            <item>Netuno</item>
+        </string-array>
+
+
 </resources>
