@@ -75,14 +75,23 @@
             android:layout_height="250dp"
             android:layout_gravity="center"
             android:layout_marginVertical="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
+                android:onClick="verificarLetra"
                 app:srcCompat="@drawable/forca1" />
+
+            <TextView
+                android:id="@+id/tvTeste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
         </LinearLayout>
 
         <TableLayout
@@ -106,6 +115,7 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/a"
                     android:textSize="16sp" />
 
@@ -114,6 +124,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/b"
                     android:textSize="16sp" />
 
@@ -122,6 +133,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/c"
                     android:textSize="16sp" />
 
@@ -130,6 +142,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/d"
                     android:textSize="16sp" />
 
@@ -138,6 +151,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/e"
                     android:textSize="16sp" />
 
@@ -146,6 +160,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/f"
                     android:textSize="16sp" />
 
@@ -154,6 +169,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/g"
                     android:textSize="16sp" />
 
@@ -171,6 +187,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/h"
                     android:textSize="18sp" />
 
@@ -179,6 +196,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/i"
                     android:textSize="18sp" />
 
@@ -187,6 +205,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/j"
                     android:textSize="18sp" />
 
@@ -195,6 +214,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/k"
                     android:textSize="18sp" />
 
@@ -203,6 +223,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/l"
                     android:textSize="18sp" />
 
@@ -211,6 +232,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/m"
                     android:textSize="18sp" />
 
@@ -219,6 +241,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/n"
                     android:textSize="18sp" />
             </TableRow>
@@ -235,6 +258,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/o"
                     android:textSize="18sp" />
 
@@ -243,6 +267,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/p"
                     android:textSize="18sp" />
 
@@ -251,6 +276,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/q"
                     android:textSize="18sp" />
 
@@ -259,6 +285,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/r"
                     android:textSize="18sp" />
 
@@ -267,6 +294,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/s"
                     android:textSize="18sp" />
 
@@ -275,6 +303,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/t"
                     android:textSize="18sp" />
 
@@ -283,6 +312,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/u"
                     android:textSize="18sp" />
             </TableRow>
@@ -300,6 +330,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/v"
                     android:textSize="18sp" />
 
@@ -308,6 +339,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/w"
                     android:textSize="18sp" />
 
@@ -316,6 +348,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/x"
                     android:textSize="18sp" />
 
@@ -324,6 +357,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/y"
                     android:textSize="18sp" />
 
@@ -332,6 +366,7 @@
                     android:layout_width="45dp"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="2dp"
+                    android:onClick="verificarLetra"
                     android:text="@string/z"
                     android:textSize="18sp" />
 
