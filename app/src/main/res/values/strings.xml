@@ -14,6 +14,15 @@
     <string name="facil">Fácil</string>
     <string name="medio">Médio</string>
     <string name="dificil">Difícil</string>
+    <string name="personalizado">Personalizado</string>
+
+    <string name="criaPalavra">crie suas palavras</string>
+    <string name="palavra">Sua Palavra:</string>
+    <string name="dica">Dica:</string>
+    <string name="quantidade">Palavras Adicionadas:</string>
+    <string name="apagar">Apagar Palavras</string>
+
+    <string name="salvar">Salvar</string>
 
     <string name="a">A</string>
     <string name="b">B</string>

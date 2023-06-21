@@ -34,7 +34,7 @@ public class Introducao extends AppCompatActivity {
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                Intent intent = new Intent(Introducao.this, MainActivity.class);
+                Intent intent = new Intent(Introducao.this, CriacaoUsuario.class);
                 startActivity(intent);
             }
         });
@@ -46,7 +46,7 @@ public class Introducao extends AppCompatActivity {
                 // Interromper a reprodução do vídeo imediatamente
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     videoView.stopPlayback();
-                    Intent intent = new Intent(Introducao.this, MainActivity.class);
+                    Intent intent = new Intent(Introducao.this, CriacaoUsuario.class);
                     startActivity(intent);
                 }
                 return true;

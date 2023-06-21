@@ -13,13 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.VideoView;
 
 import androidx.core.widget.ImageViewCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class CriacaoUsuario extends AppCompatActivity implements View.OnClickListener{
 
     private ImageButton btchar1, btchar2, btchar3, btchar4;
     private EditText nick;
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_criacao_usuario);
         getSupportActionBar().hide();
 
 
