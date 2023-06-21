@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:paddingHorizontal="30dp"
+    android:paddingHorizontal="15dp"
     tools:context=".CriaPalavra">
 
     <TableRow
@@ -23,18 +23,45 @@
     </TableRow>
 
     <TableRow
+        android:id="@+id/trDica"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginVertical="20dp">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvDica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="6"
             android:fontFamily="@font/coda"
+            android:text="@string/tema"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etDica"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:fontFamily="@font/coda"
+            android:hint="Tema das palavras"
+            android:inputType="text" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:fontFamily="@font/coda"
             android:text="@string/palavra"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/etPala"
@@ -49,35 +76,8 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/trDica"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="20dp">
-
-        <TextView
-            android:id="@+id/tvDica"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:fontFamily="@font/coda"
-            android:text="@string/dica"
-            android:textSize="22sp" />
-
-        <EditText
-            android:id="@+id/etDica"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:fontFamily="@font/coda"
-            android:hint="Dica da palavra"
-            android:inputType="text" />
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textView6"

@@ -18,6 +18,7 @@ import java.util.List;
 
 public class MenuDificuldade extends AppCompatActivity implements View.OnClickListener {
 
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +34,10 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
+        pers.setOnClickListener(this);
 
 
-        personalizado(pers);
+        personalizado(pers,pers);
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +50,16 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private void personalizado(View v) {
+    private void personalizado(View v, Button button) {
+        Intent intent = getIntent();
         BancoPalavras bp = new BancoPalavras(this);
         int quantidade = bp.obterQuantidadePalavras();
+
+        if(intent.hasExtra("personalizado")){
+            user = (User) intent.getSerializableExtra("personalizado");
+            button.setText(String.valueOf(bp.buscarDica()));
+            //botao seta text valor da dica
+        }
 
         if(quantidade>0){
             v.setVisibility(v.VISIBLE);
@@ -63,19 +72,21 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         String dificuldade = v.getTag().toString();
         setarDificuldade(dificuldade);
-        Jogar();
     }
 
     private void setarDificuldade(String dificuldade) {
         Intent intent = getIntent();
-        if (intent.hasExtra("user")) {
-            User user = (User) intent.getSerializableExtra("user");
+        if (intent.hasExtra("usuario")) {
+            user = (User) intent.getSerializableExtra("usuario");
             user.setDificuldade(dificuldade);
+            System.out.println(dificuldade);
+            Jogar();
         }
     }
 
     private void Jogar() {
         Intent intent = new Intent(this, TelaJogo.class);
+        intent.putExtra("usuario",user);
         startActivity(intent);
     }
 }

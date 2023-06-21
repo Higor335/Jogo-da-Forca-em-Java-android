@@ -43,9 +43,35 @@ public class BancoPalavras extends SQLiteOpenHelper {
         return id;
     }
 
+    public long inserirDica(String dica){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DICA, dica);
+        long id = db.insert(TABLE_NAME, null, values);
+        db.close();
+        return id;
+    }
+
+    public String buscarDica() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT " + COLUMN_DICA + " FROM " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        String dica = null;
+
+        if (cursor.moveToFirst()) {
+            dica = cursor.getString(cursor.getColumnIndex(COLUMN_DICA));
+        }
+
+        cursor.close();
+        return dica;
+    }
+
+
+
     public Cursor buscarPalavras() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + TABLE_NAME;
+        String selectQuery = "SELECT "+ COLUMN_PALAVRA +" FROM " + TABLE_NAME;
         Cursor cursor = db.rawQuery(selectQuery, null);
         return cursor;
     }

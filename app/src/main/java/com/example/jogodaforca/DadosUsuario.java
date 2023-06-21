@@ -19,6 +19,8 @@ public class DadosUsuario extends AppCompatActivity {
     String nome;
     int foto;
 
+    User user;
+
     BancoDeDados bd = new BancoDeDados(this);
 
     @SuppressLint("MissingInflatedId")
@@ -36,22 +38,28 @@ public class DadosUsuario extends AppCompatActivity {
     private void preencherCampos() {
         Intent intent = getIntent();
         if (intent.hasExtra("user")){
-            User user;
             user = (User) intent.getSerializableExtra("user");
             nick.setText(user.getNick());
             nome = user.getNick();
             int idImagem = getResources().getIdentifier(user.getFoto(), "drawable", getPackageName());
             avatar.setImageResource(idImagem);
             foto = idImagem;
-
         }
+    }
+
+    public void passaValores(){
+        User usuario = new User();
+        usuario.setNick(user.getNick());
+        usuario.setFoto(user.getFoto());
+
+        Intent intent = new Intent(this, MenuDificuldade.class);
+        intent.putExtra("usuario",usuario);
+        startActivity(intent);
     }
 
     public void continuar(View v){
         bd.salvarVariaveis(nome,foto);
-
-        Intent intent = new Intent(this, MenuDificuldade.class);
-        startActivity(intent);
+        passaValores();
     }
 
     public void voltar(View v){

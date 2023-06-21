@@ -22,10 +22,13 @@ import org.w3c.dom.Text;
 public class CriaPalavra extends AppCompatActivity {
 
 
-    EditText pala,dica;
+    EditText pala,tema;
     TextView qtd;
     TableRow tb;
     int quantidade = 0;
+    BancoPalavras bp;
+    String temaPalavras;
+    long existePalavra;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -34,7 +37,7 @@ public class CriaPalavra extends AppCompatActivity {
         setContentView(R.layout.activity_cria_palavra);
 
         pala = (EditText) findViewById(R.id.etPala);
-        dica = (EditText)findViewById(R.id.etDica);
+        tema = (EditText)findViewById(R.id.etDica);
         qtd = (TextView) findViewById(R.id.tvQuantidade);
         tb = (TableRow) findViewById(R.id.trDica);
 
@@ -44,7 +47,7 @@ public class CriaPalavra extends AppCompatActivity {
     }
 
     public void verificaDica(View v){
-        BancoPalavras bp = new BancoPalavras(this);
+        bp = new BancoPalavras(this);
         int quantidade = bp.obterQuantidadePalavras();
         if(quantidade>0){
             v.setVisibility(View.GONE);
@@ -55,13 +58,14 @@ public class CriaPalavra extends AppCompatActivity {
 
     public void salvar(View v){
         if(!pala.getText().toString().isEmpty()) {
-            BancoPalavras bp = new BancoPalavras(this);
-            long id = bp.inserirPalavra(String.valueOf(pala));
+            bp = new BancoPalavras(this);
+            existePalavra = bp.inserirPalavra(String.valueOf(pala));
+            long id = bp.inserirDica(String.valueOf(tema));
             if (id != -1) {
                 Toast.makeText(getApplicationContext(), "Palavra salva com sucesso", Toast.LENGTH_SHORT).show();
             }
             pala.setText("");
-            dica.setText("");
+            temaPalavras = String.valueOf(tema.getText());
             mostraQTD();
             verificaDica(tb);
         }else{
@@ -78,6 +82,11 @@ public class CriaPalavra extends AppCompatActivity {
 
     public void volta(View v){
         Intent intent = new Intent(this,MenuDificuldade.class);
+        if(existePalavra != -1){
+            User user = new User();
+            user.setDica(temaPalavras);
+            intent.putExtra("personalizado",user);
+        }
         startActivity(intent);
     }
 
