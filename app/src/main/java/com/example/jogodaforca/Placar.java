@@ -3,6 +3,7 @@ package com.example.jogodaforca;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -26,9 +27,16 @@ public class Placar extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        float shadowRadius = 30.0f;
+        float shadowDx = 3.0f;
+        float shadowDy = 3.0f;
+        int shadowColor = Color.BLACK;
+
+
         tvnomes = findViewById(R.id.tvNomes);
         tvpontos = findViewById(R.id.tvPontos);
-
+        tvnomes.setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor);
+        tvpontos.setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor);
 
 
         tvnomes.setText("Jogadores");

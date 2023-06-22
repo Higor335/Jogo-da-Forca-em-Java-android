@@ -39,7 +39,8 @@
         android:layout_marginBottom="148dp"
         android:gravity="center_horizontal"
         android:textColor="#F8BA00"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvPontos"
@@ -53,7 +54,8 @@
         android:layout_marginEnd="3dp"
         android:gravity="center_horizontal"
         android:textColor="#F8BA00"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
