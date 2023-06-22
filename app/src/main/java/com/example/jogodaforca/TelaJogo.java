@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -38,6 +41,8 @@ public class TelaJogo extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private long tempoInicial = 120000;
 
+    private ImageButton config;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,7 @@ public class TelaJogo extends AppCompatActivity {
         avatar = findViewById(R.id.ivJogador);
         teste = findViewById(R.id.tvTeste);
         forca = findViewById(R.id.ivForca);
+        config = findViewById(R.id.btConfig);
 
         Intent intent = getIntent();
         if (intent.hasExtra("usuario")) {
@@ -107,6 +113,13 @@ public class TelaJogo extends AppCompatActivity {
 
         // Iniciar o cronômetro
         countDownTimer.start();
+
+        config.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSettingsMenu(v);
+            }
+        });
     }
 
     @Override
@@ -114,6 +127,37 @@ public class TelaJogo extends AppCompatActivity {
         super.onDestroy();
         // Parar o cronômetro quando a activity for destruída
         countDownTimer.cancel();
+    }
+
+    private void showSettingsMenu(View anchorView) {
+        PopupMenu popupMenu = new PopupMenu(this, anchorView);
+        popupMenu.inflate(R.menu.menu_settings);
+
+        // Configurar listener para os itens do menu
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Lidar com o clique nos itens do menu
+                switch (item.getItemId()) {
+                    case R.id.menuItem1:
+                        // Ação Resetar
+                        reiniciarJogo();
+                        return true;
+                    case R.id.menuItem2:
+                        // Ação voltar
+                        finish();
+                        return true;
+                    case R.id.menuItem3:
+                        // Ação Sair
+                        finishAffinity();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        popupMenu.show();
     }
 
     private void criarLinhas(String palavra) {

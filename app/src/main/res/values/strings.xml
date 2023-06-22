@@ -16,6 +16,10 @@
     <string name="dificil">Difícil</string>
     <string name="personalizado">Personalizado</string>
 
+    <string name="reiniciar">Reiniciar</string>
+    <string name="dificuldadeMenu">Nova palavra</string>
+    <string name="Sair">Sair</string>
+
     <string name="criaPalavra">crie suas palavras</string>
     <string name="palavra">Sua Palavra:</string>
     <string name="tema">Tema:</string>
