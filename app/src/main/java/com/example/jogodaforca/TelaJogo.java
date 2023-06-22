@@ -22,13 +22,20 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Random;
 
-public class TelaJogo extends AppCompatActivity {
+public class TelaJogo extends AppCompatActivity implements SensorEventListener {
 
+    private SensorManager sensorManager;
+    private Sensor accelerometerSensor;
+    private static final float SHAKE_THRESHOLD = 20;
     private TextView nick, timer, teste;
     private ImageView avatar, forca;
     private String dificuldade;
@@ -127,6 +134,11 @@ public class TelaJogo extends AppCompatActivity {
                 showSettingsMenu(v);
             }
         });
+
+        // Inicialize o SensorManager
+        sensorManager = (SensorManager) getSystemService(this.SENSOR_SERVICE);
+        // Obtenha uma referência para o acelerômetro
+        accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     }
 
     @Override
@@ -321,5 +333,44 @@ public class TelaJogo extends AppCompatActivity {
 
     private void reiniciarJogo() {
         recreate();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Registre o SensorEventListener para o acelerômetro
+        sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Pare de ouvir o acelerômetro quando a activity estiver em pausa
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        // Verifique se o sensor é o acelerômetro
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            // Obtenha os valores de aceleração nas três dimensões
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+
+            // Calcule a aceleração resultante
+            float acceleration = (float) Math.sqrt(x * x + y * y + z * z);
+
+            // Verifique se a aceleração resultante é maior que o limiar definido
+            if (acceleration > SHAKE_THRESHOLD) {
+                // Chame a função "reiniciarJogo" quando o dispositivo for chacoalhado
+                reiniciarJogo();
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // Não é necessário implementar este método para a detecção de chacoalhar
     }
 }

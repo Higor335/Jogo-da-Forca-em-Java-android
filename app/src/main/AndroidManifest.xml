@@ -12,6 +12,8 @@
         android:theme="@style/Theme.JogoDaForca"
         tools:targetApi="31">
 
+
+
         <activity
             android:name=".Placar"
             android:exported="false" />
@@ -52,5 +54,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+
 
 </manifest>
