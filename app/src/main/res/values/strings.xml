@@ -1,4 +1,15 @@
 <resources>
+
+    <string name="jogar">Jogar</string>
+    <string name="sair">Sair</string>
+    <string name="creditos">Créditos</string>
+    <string name="placar">Placar</string>
+
+
+    <string name="githubH">GitHub: Higor335</string>
+    <string name="githubJ">GitHub: Jose-115</string>
+    <string name="TextoSobre">Criadores: Higor Vital e José Leonardo. Estudantes do curso Sistemas de Informação na UFMS.</string>
+
     <string name="app_name">Jogo da Forca</string>
     <string name="tituloPerfil">Criação de Perfil</string>
     <string name="nick">NICKNAME:</string>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tvSobre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25sp"
+            android:layout_marginBottom="10sp"
+            android:fontFamily="@font/coda"
+            android:gravity="center"
+            android:text="@string/creditos"
+            android:textColor="#10F108"
+            android:textSize="38sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSobreTxt"
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/coda"
+            android:text="@string/TextoSobre"
+            android:textColor="#10F108"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btGith"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="25dp"
+            android:backgroundTint="#332E2E"
+            android:fontFamily="@font/coda"
+            android:onClick="gitH"
+            android:text="@string/githubH"
+            android:textColor="#45FF02"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btGitj"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="#332E2E"
+            android:fontFamily="@font/coda"
+            android:gravity="center"
+            android:onClick="gitJ"
+            android:text="@string/githubJ"
+            android:textColor="#45FF02"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btRetornaHome"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#686767"
+            android:fontFamily="@font/coda"
+            android:onClick="retornaHOME"
+            android:text="@string/voltar"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

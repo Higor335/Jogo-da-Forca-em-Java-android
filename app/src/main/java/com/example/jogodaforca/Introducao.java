@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.VideoView;
 
 public class Introducao extends AppCompatActivity {
@@ -18,6 +19,8 @@ public class Introducao extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introducao);
         getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         videoView = findViewById(R.id.videoView);
 
@@ -34,7 +37,7 @@ public class Introducao extends AppCompatActivity {
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                Intent intent = new Intent(Introducao.this, CriacaoUsuario.class);
+                Intent intent = new Intent(Introducao.this, Home.class);
                 startActivity(intent);
             }
         });
@@ -46,7 +49,7 @@ public class Introducao extends AppCompatActivity {
                 // Interromper a reprodução do vídeo imediatamente
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     videoView.stopPlayback();
-                    Intent intent = new Intent(Introducao.this, CriacaoUsuario.class);
+                    Intent intent = new Intent(Introducao.this, Home.class);
                     startActivity(intent);
                 }
                 return true;

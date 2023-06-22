@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class DadosUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_usuario);
         getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         nick = (TextView) findViewById(R.id.tvNickResult);
         avatar = (ImageView) findViewById(R.id.ivAvatar);
@@ -59,6 +61,7 @@ public class DadosUsuario extends AppCompatActivity {
 
     public void continuar(View v){
         bd.salvarVariaveis(nome,foto);
+        bd.adicionarPontos("5");
         passaValores();
     }
 

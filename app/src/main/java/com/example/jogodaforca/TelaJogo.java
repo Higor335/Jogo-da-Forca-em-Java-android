@@ -12,6 +12,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -48,6 +49,7 @@ public class TelaJogo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_jogo);
         getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         nick = findViewById(R.id.tvJogador);
         timer = findViewById(R.id.tvTempo);
@@ -257,7 +259,12 @@ public class TelaJogo extends AppCompatActivity {
             tempoCronometro = tempoInicial - tempoRestante;
 
             Toast.makeText(this, "Parabéns !!!" + formatarTempo(tempoCronometro), Toast.LENGTH_SHORT).show();
-            //mandar para a tela de score
+            BancoDeDados bd = new BancoDeDados(this);
+            bd.adicionarPontos(formatarTempo(tempoCronometro));
+
+            System.out.println("Pontos do banco "+bd.obterPontos());
+            Intent intente = new Intent(TelaJogo.this,Placar.class);
+            startActivity(intente);
         }
     }
 
