@@ -29,6 +29,8 @@
 
     <string name="reiniciar">Reiniciar</string>
     <string name="dificuldadeMenu">Nova palavra</string>
+    <string name="mudarDificuldade">Mudar Dificuldade</string>
+    <string name="SairDoJogo">Sair do jogo</string>
     <string name="Sair">Sair</string>
 
     <string name="criaPalavra">crie suas palavras</string>

@@ -5,8 +5,8 @@
         android:title="@string/reiniciar" />
     <item
         android:id="@+id/menuItem2"
-        android:title="@string/dificuldadeMenu" />
+        android:title="@string/mudarDificuldade" />
     <item
         android:id="@+id/menuItem3"
-        android:title="@string/Sair" />
+        android:title="@string/SairDoJogo" />
 </menu>
