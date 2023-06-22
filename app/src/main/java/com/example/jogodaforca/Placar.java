@@ -29,6 +29,8 @@ public class Placar extends AppCompatActivity {
         tvnomes = findViewById(R.id.tvNomes);
         tvpontos = findViewById(R.id.tvPontos);
 
+
+
         tvnomes.setText("Jogadores");
         tvpontos.setText("Melhor Tempo");
 

@@ -77,6 +77,7 @@
         android:backgroundTint="#A60383"
         android:fontFamily="@font/coda"
         android:text="@string/personalizado"
+        android:tag="personalizado"
         android:textSize="20sp" />
 
     <RelativeLayout

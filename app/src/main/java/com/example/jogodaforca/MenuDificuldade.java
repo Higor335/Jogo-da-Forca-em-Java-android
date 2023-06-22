@@ -2,6 +2,8 @@ package com.example.jogodaforca;
 
 import static android.widget.Button.*;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -20,6 +22,9 @@ import java.util.List;
 public class MenuDificuldade extends AppCompatActivity implements View.OnClickListener {
 
     User user;
+    Button pers;
+    private boolean isPersButtonVisible = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +35,7 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
         Button button1 = findViewById(R.id.btFacil);
         Button button2 = findViewById(R.id.btMedio);
         Button button3 = findViewById(R.id.btDificil);
-        Button pers = findViewById(R.id.btPers);
+        pers = findViewById(R.id.btPers);
         TextView tv = (TextView)findViewById(R.id.tvPalavra);
 
         button1.setOnClickListener(this);
@@ -38,34 +43,40 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
         button3.setOnClickListener(this);
         pers.setOnClickListener(this);
 
-
-
-
-        personalizado(pers,pers);
+        personalizado(pers);
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MenuDificuldade.this, CriaPalavra.class);
-                startActivity(intent);
+                criarPalavraLauncher.launch(intent);
             }
         });
-
-
     }
 
-    private void personalizado(View v, Button button) {
+    private final ActivityResultLauncher<Intent> criarPalavraLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    personalizado(pers);
+                    pers.setVisibility(isPersButtonVisible ? View.VISIBLE : View.GONE);
+                }
+            }
+    );
+
+    private void personalizado(Button button) {
         Intent intent = getIntent();
         BancoPalavras bp = new BancoPalavras(this);
         int quantidade = bp.obterQuantidadePalavras();
 
-        if(quantidade>0){
-            v.setVisibility(v.VISIBLE);
+        if (quantidade > 0) {
+            isPersButtonVisible = true;
+            button.setVisibility(View.VISIBLE);
             user = (User) intent.getSerializableExtra("personalizado");
             button.setText(String.valueOf(bp.buscarDica()));
-        }else{
-            v.setVisibility(v.GONE);
+        } else {
+            isPersButtonVisible = false;
+            button.setVisibility(View.GONE);
         }
     }
 

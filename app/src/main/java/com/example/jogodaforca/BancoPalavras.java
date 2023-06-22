@@ -63,12 +63,26 @@ public class BancoPalavras extends SQLiteOpenHelper {
         return dica;
     }
 
-    public Cursor buscarPalavras() {
+    public String[] buscarPalavras() {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT " + COLUMN_PALAVRA + " FROM " + TABLE_NAME;
         Cursor cursor = db.rawQuery(selectQuery, null);
-        return cursor;
+
+        String[] palavras = new String[cursor.getCount()];
+
+        if (cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndex(COLUMN_PALAVRA);
+            int i = 0;
+            do {
+                palavras[i] = cursor.getString(columnIndex);
+                i++;
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return palavras;
     }
+
 
     public int obterQuantidadePalavras() {
         SQLiteDatabase db = this.getReadableDatabase();

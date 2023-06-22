@@ -78,6 +78,10 @@ public class TelaJogo extends AppCompatActivity {
         }if(dificuldade.equals("dificil")){
             palavras = resources.getStringArray(R.array.planetasDificil);
             dica="Planeta";
+        }if(dificuldade.equals("personalizado")){
+            BancoPalavras bp = new BancoPalavras(this);
+            palavras = bp.buscarPalavras();
+            dica=bp.buscarDica();
         }
 
 

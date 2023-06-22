@@ -84,8 +84,9 @@ public class CriaPalavra extends AppCompatActivity {
 
 
     public void volta(View v){
-        Intent intent = new Intent(this,MenuDificuldade.class);
-        startActivity(intent);
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     public void apagar(View v){
