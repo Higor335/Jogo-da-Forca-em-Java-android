@@ -39,6 +39,8 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
         pers.setOnClickListener(this);
 
 
+
+
         personalizado(pers,pers);
 
         tv.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +51,7 @@ public class MenuDificuldade extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
             }
         });
+
 
     }
 

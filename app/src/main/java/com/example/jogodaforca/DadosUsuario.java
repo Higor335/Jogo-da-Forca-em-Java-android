@@ -60,8 +60,8 @@ public class DadosUsuario extends AppCompatActivity {
     }
 
     public void continuar(View v){
-        bd.salvarVariaveis(nome,foto);
-        bd.adicionarPontos("5");
+        bd.salvarVariaveis(user.getNick(),foto);
+        bd.adicionarPontos("02:00");
         passaValores();
     }
 

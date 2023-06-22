@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BancoDeDados extends SQLiteOpenHelper {
@@ -60,22 +61,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.close();
     }
 
-    @SuppressLint("Range")
-    public String obterNick() {
-        SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT " + COLUMN_NICK + " FROM " + TABLE_NOME + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
-        Cursor cursor = db.rawQuery(query, null);
-        String nick = null;
-
-        if (cursor.moveToFirst()) {
-            nick = cursor.getString(cursor.getColumnIndex(COLUMN_NICK));
-        }
-
-        cursor.close();
-        db.close();
-
-        return nick;
-    }
 
     public String[] obterNicks() {
         SQLiteDatabase db = getReadableDatabase();
@@ -99,22 +84,32 @@ public class BancoDeDados extends SQLiteOpenHelper {
         return nicks;
     }
 
-    @SuppressLint("Range")
-    public int obterFoto() {
+
+
+    public int[] obterFotos() {
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT " + COLUMN_FOTO + " FROM " + TABLE_NOME + " ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
+        String query = "SELECT " + COLUMN_FOTO + " FROM " + TABLE_NOME + " WHERE " + COLUMN_FOTO + " IS NOT NULL";
         Cursor cursor = db.rawQuery(query, null);
-        int foto = 0;
+        List<Integer> fotoList = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
-            foto = cursor.getInt(cursor.getColumnIndex(COLUMN_FOTO));
+            do {
+                @SuppressLint("Range") int foto = cursor.getInt(cursor.getColumnIndex(COLUMN_FOTO));
+                fotoList.add(foto);
+            } while (cursor.moveToNext());
         }
 
         cursor.close();
         db.close();
 
-        return foto;
+        int[] fotos = new int[fotoList.size()];
+        for (int i = 0; i < fotoList.size(); i++) {
+            fotos[i] = fotoList.get(i);
+        }
+
+        return fotos;
     }
+
 
     @SuppressLint("Range")
     public String[] obterPontos() {
@@ -154,6 +149,26 @@ public class BancoDeDados extends SQLiteOpenHelper {
         db.close();
         return count == 0;
     }
+
+    public void excluirUltimoPonto() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        // Obtém o último registro de pontos
+        String query = "SELECT " + COLUMN_ID + " FROM " + TABLE_NOME + " WHERE " + COLUMN_PONTOS + " IS NOT NULL ORDER BY " + COLUMN_ID + " DESC LIMIT 1";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+
+            // Exclui o registro do último ponto
+            db.delete(TABLE_NOME, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+        }
+
+        cursor.close();
+        db.close();
+    }
+
+
 
     public void apagarTudo() {
         SQLiteDatabase db = getWritableDatabase();

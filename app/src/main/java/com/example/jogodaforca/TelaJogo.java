@@ -58,6 +58,8 @@ public class TelaJogo extends AppCompatActivity {
         forca = findViewById(R.id.ivForca);
         config = findViewById(R.id.btConfig);
 
+        preencherCampos();
+
         Intent intent = getIntent();
         if (intent.hasExtra("usuario")) {
             User user = (User) intent.getSerializableExtra("usuario");
@@ -89,7 +91,6 @@ public class TelaJogo extends AppCompatActivity {
         criarLinhas(palavraAleatoria);
         teste.setText(dica);
 
-        preencherCampos();
 
         cronometro = findViewById(R.id.tvTempo);
 
@@ -237,8 +238,15 @@ public class TelaJogo extends AppCompatActivity {
 
     private void preencherCampos() {
         BancoDeDados bd = new BancoDeDados(this);
-        avatar.setImageResource(bd.obterFoto());
-        nick.setText(bd.obterNick());
+        String[] nicks = bd.obterNicks();
+        String ultimoNick = nicks[nicks.length - 1];
+
+        int[] fotos = bd.obterFotos();
+        int ultimaFoto = fotos[fotos.length - 1];
+
+
+        avatar.setImageResource(ultimaFoto);
+        nick.setText(ultimoNick);
     }
 
     private void verificarCamposPreenchidos() {
@@ -260,13 +268,21 @@ public class TelaJogo extends AppCompatActivity {
 
             Toast.makeText(this, "Parabéns !!!" + formatarTempo(tempoCronometro), Toast.LENGTH_SHORT).show();
             BancoDeDados bd = new BancoDeDados(this);
-            bd.adicionarPontos(formatarTempo(tempoCronometro));
 
-            System.out.println("Pontos do banco "+bd.obterPontos());
-            Intent intente = new Intent(TelaJogo.this,Placar.class);
-            startActivity(intente);
+            String[] pontos = bd.obterPontos();
+            String ultimoPonto = pontos[pontos.length - 1];
+
+            if (ultimoPonto.equals("02:00")) {
+                bd.excluirUltimoPonto(); // Exclui o último ponto do banco
+            }
+
+            bd.adicionarPontos(formatarTempo(tempoCronometro)); // Adicionar o novo ponto na última posição com o nick correspondente
+
+            Intent intent = new Intent(TelaJogo.this, Placar.class);
+            startActivity(intent);
         }
     }
+
 
     private void exibirMensagemConfirmacao() {
         countDownTimer.cancel();

@@ -9,9 +9,16 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class Placar extends AppCompatActivity {
 
-    TextView tvnomes,tvpontos;
+    TextView tvnomes, tvpontos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,33 +26,76 @@ public class Placar extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        tvnomes = (TextView) findViewById(R.id.tvNomes);
-        tvpontos = (TextView) findViewById(R.id.tvPontos);
+        tvnomes = findViewById(R.id.tvNomes);
+        tvpontos = findViewById(R.id.tvPontos);
 
         tvnomes.setText("Jogadores");
         tvpontos.setText("Melhor Tempo");
 
         BancoDeDados bd = new BancoDeDados(this);
-        if(!bd.estaVazio()) {
+        if (!bd.estaVazio()) {
             String[] nicks = bd.obterNicks();
             String[] vetorPontos = bd.obterPontos();
 
-            String textoNicks = "";
-            String pontos = "";
+            List<Jogador> jogadores = new ArrayList<>();
 
-            for (String nick : nicks) {
-                textoNicks += nick + "\n";
+            for (int i = 0; i < nicks.length; i++) {
+                Jogador jogador = new Jogador(nicks[i], vetorPontos[i]);
+                jogadores.add(jogador);
             }
-            for (String ponto : vetorPontos) {
-                pontos += ponto + "\n";
+
+            Collections.sort(jogadores, new Comparator<Jogador>() {
+                @Override
+                public int compare(Jogador jogador1, Jogador jogador2) {
+                    int pontos1 = convertToSeconds(jogador1.getPontos());
+                    int pontos2 = convertToSeconds(jogador2.getPontos());
+                    return Integer.compare(pontos1, pontos2);
+                }
+            });
+
+            StringBuilder textoNicks = new StringBuilder();
+            StringBuilder pontos = new StringBuilder();
+
+            int limite = Math.min(10, jogadores.size());
+
+            for (int i = 0; i < limite; i++) {
+                Jogador jogador = jogadores.get(i);
+                textoNicks.append(jogador.getNick()).append("\n");
+                pontos.append(jogador.getPontos()).append("\n");
             }
-            tvnomes.setText(tvnomes.getText()+"\n"+textoNicks);
-            tvpontos.setText(tvpontos.getText()+"\n"+pontos);
+
+            tvnomes.setText(tvnomes.getText() + "\n" + textoNicks.toString());
+            tvpontos.setText(tvpontos.getText() + "\n" + pontos.toString());
         }
     }
 
-    public void sairPlacar(View v){
-        Intent intent = new Intent(this,Home.class);
+    public void sairPlacar(View v) {
+        Intent intent = new Intent(this, Home.class);
         startActivity(intent);
+    }
+
+    public class Jogador {
+        private String nick;
+        private String pontos;
+
+        public Jogador(String nick, String pontos) {
+            this.nick = nick;
+            this.pontos = pontos;
+        }
+
+        public String getNick() {
+            return nick;
+        }
+
+        public String getPontos() {
+            return pontos;
+        }
+    }
+
+    private int convertToSeconds(String time) {
+        String[] parts = time.split(":");
+        int minutes = Integer.parseInt(parts[0]);
+        int seconds = Integer.parseInt(parts[1]);
+        return minutes * 60 + seconds;
     }
 }

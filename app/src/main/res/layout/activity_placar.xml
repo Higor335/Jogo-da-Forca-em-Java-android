@@ -27,29 +27,31 @@
 
     <TextView
         android:id="@+id/tvNomes"
-        android:layout_width="167dp"
+        android:layout_width="182dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="69dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="181dp"
-        android:layout_marginEnd="175dp"
+        android:layout_marginEnd="190dp"
         android:layout_marginBottom="148dp"
+        android:gravity="center_horizontal"
         android:textColor="#F3A304"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tvPontos"
-        android:layout_width="134dp"
+        android:layout_width="187dp"
         android:layout_height="396dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="238dp"
+        android:layout_marginStart="221dp"
         android:layout_marginTop="181dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="3dp"
+        android:gravity="start"
         android:textColor="#F3A304"
         android:textSize="20sp" />
 
