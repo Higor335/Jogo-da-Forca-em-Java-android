@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Random;
 
 public class TelaJogo extends AppCompatActivity {
@@ -27,12 +29,14 @@ public class TelaJogo extends AppCompatActivity {
     private ImageView avatar, forca;
     private String dificuldade;
     public String palavraAleatoria;
-
     private char[] letrasArray;
     private EditText[] editTextArray;
-
     private static final int MAX_TENTATIVAS = 7;
     private int tentativas = 0;
+    private long tempoCronometro, tempoRestante;
+    private TextView cronometro;
+    private CountDownTimer countDownTimer;
+    private long tempoInicial = 120000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +82,38 @@ public class TelaJogo extends AppCompatActivity {
         teste.setText(dica);
 
         preencherCampos();
+
+        cronometro = findViewById(R.id.tvTempo);
+
+        countDownTimer = new CountDownTimer(tempoInicial, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                tempoRestante = millisUntilFinished;  // Atualiza o tempo restante a cada tick
+                long segundos = millisUntilFinished / 1000;
+                long minutos = segundos / 60;
+                segundos = segundos % 60;
+
+                String tempoFormatado = String.format(Locale.getDefault(), "%02d:%02d", minutos, segundos);
+                cronometro.setText(tempoFormatado);
+            }
+
+            @Override
+            public void onFinish() {
+                cronometro.setText("00:00");
+                //AÇÂO PARA O FIM DO CRONÔMETRO
+                exibirMensagemConfirmacao();
+            }
+        };
+
+        // Iniciar o cronômetro
+        countDownTimer.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Parar o cronômetro quando a activity for destruída
+        countDownTimer.cancel();
     }
 
     private void criarLinhas(String palavra) {
@@ -171,12 +207,18 @@ public class TelaJogo extends AppCompatActivity {
 
         if (todosPreenchidos) {
             // Tela de jogo concluído
-            Toast.makeText(this, "Parabéns !!!", Toast.LENGTH_SHORT).show();
+            // Parar o cronômetro
+            countDownTimer.cancel();
+            // Obter o tempo do cronômetro
+            tempoCronometro = tempoInicial - tempoRestante;
+
+            Toast.makeText(this, "Parabéns !!!" + formatarTempo(tempoCronometro), Toast.LENGTH_SHORT).show();
             //mandar para a tela de score
         }
     }
 
     private void exibirMensagemConfirmacao() {
+        countDownTimer.cancel();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Jogo da Forca");
         builder.setMessage("Você Perdeu! Deseja reiniciar o jogo ou sair?");
@@ -196,6 +238,14 @@ public class TelaJogo extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private String formatarTempo(long tempo) {
+        //FORMATAR O TEMPO DO CRONOMETRO
+        long segundos = tempo / 1000;
+        long minutos = segundos / 60;
+        segundos = segundos % 60;
+        return String.format(Locale.getDefault(), "%02d:%02d", minutos, segundos);
     }
 
     private void reiniciarJogo() {
