@@ -15,6 +15,8 @@ public class musica extends Service {
     public void onCreate() {
         super.onCreate();
         mediaPlayer = MediaPlayer.create(this, R.raw.musica);
+        float volume = 0.1f; // Volume máximo (1.0f)
+        mediaPlayer.setVolume(volume, volume);
         mediaPlayer.setLooping(true);
     }
 

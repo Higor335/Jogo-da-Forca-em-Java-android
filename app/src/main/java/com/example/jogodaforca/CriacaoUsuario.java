@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,6 +28,7 @@ public class CriacaoUsuario extends AppCompatActivity implements View.OnClickLis
     private Button Entrar;
     public String imagemSelecionada="";
 
+    private MediaPlayer mediaPlayer;
 
     public User user;
 
@@ -38,6 +40,7 @@ public class CriacaoUsuario extends AppCompatActivity implements View.OnClickLis
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.somavatar);
 
         declaraChamada();
         listenerNick();
@@ -83,6 +86,9 @@ public class CriacaoUsuario extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        float volume = 1.0f; // Volume máximo (1.0f)
+        mediaPlayer.setVolume(volume, volume);
+        mediaPlayer.start();
         for (ImageButton imageButton : imageButtons) {
             if (imageButton.getId() == v.getId()) {
                 imageButton.setSelected(true);

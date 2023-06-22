@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.TypedValue;
@@ -50,6 +51,8 @@ public class TelaJogo extends AppCompatActivity implements SensorEventListener {
     private long tempoInicial = 120000;
 
     private ImageButton config;
+
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -242,6 +245,8 @@ public class TelaJogo extends AppCompatActivity implements SensorEventListener {
 
             if (tentativas == MAX_TENTATIVAS) {
                 // Você perdeu
+                mediaPlayer = MediaPlayer.create(this, R.raw.derrota);
+                mediaPlayer.start();
                 Toast.makeText(this, "Você perdeu!", Toast.LENGTH_SHORT).show();
                 exibirMensagemConfirmacao();
             } else {
@@ -281,7 +286,10 @@ public class TelaJogo extends AppCompatActivity implements SensorEventListener {
             countDownTimer.cancel();
             // Obter o tempo do cronômetro
             tempoCronometro = tempoInicial - tempoRestante;
-
+            mediaPlayer = MediaPlayer.create(this, R.raw.vitoria);
+            float volume = 0.8f; // Volume máximo (1.0f)
+            mediaPlayer.setVolume(volume, volume);
+            mediaPlayer.start();
             Toast.makeText(this, "Parabéns !!!" + formatarTempo(tempoCronometro), Toast.LENGTH_SHORT).show();
             BancoDeDados bd = new BancoDeDados(this);
 
